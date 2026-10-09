@@ -83,26 +83,43 @@ header h1{
   font-weight:700;
 }
 .areas{
-  display:flex;
-  flex-wrap:wrap;
-  gap:6px;
-}
-.areas span{
-  font-size:.74rem;
-  background:var(--accent-soft);
-  color:var(--accent);
-  border-radius:999px;
-  padding:3px 10px;
-  font-weight:700;
+  font-size:.8rem;
+  color:var(--ink-soft);
+  margin:0 0 10px;
 }
 
-/* quick nav */
+/* quick nav (collapsible) */
+details.toc-details{
+  margin-top:10px;
+}
+details.toc-details summary{
+  cursor:pointer;
+  font-size:.82rem;
+  font-weight:700;
+  color:var(--ink-soft);
+  background:var(--surface);
+  border:1px solid var(--line);
+  border-radius:999px;
+  padding:7px 14px;
+  display:inline-flex;
+  align-items:center;
+  gap:6px;
+  list-style:none;
+}
+details.toc-details summary::-webkit-details-marker{display:none;}
+details.toc-details summary::after{
+  content:"▾";
+  font-size:.65rem;
+  transition:transform .15s;
+}
+details.toc-details[open] summary::after{
+  transform:rotate(180deg);
+}
 nav.toc{
   display:flex;
+  flex-wrap:wrap;
   gap:8px;
-  overflow-x:auto;
-  padding:14px 0 2px;
-  margin-bottom:8px;
+  padding:10px 0 2px;
 }
 nav.toc a{
   flex:0 0 auto;
@@ -367,14 +384,31 @@ footer{
 .cta-join:visited{color:#fff;}
 .cta-join:focus-visible{outline:2px solid var(--accent); outline-offset:3px;}
 
-.mimic-notice{
+.notice-box{
   margin-top:10px;
   padding:10px 12px;
   background:var(--accent-soft);
   border-radius:8px;
+}
+.notice-box ul{
+  margin:0;
+  padding:0;
+  list-style:none;
+  display:flex;
+  flex-direction:column;
+  gap:8px;
+}
+.notice-box li{
   font-size:.78rem;
   color:var(--ink-soft);
   line-height:1.6;
+  padding-left:1em;
+  position:relative;
+}
+.notice-box li::before{
+  content:"・";
+  position:absolute;
+  left:0;
 }
 
 .new-badge{
@@ -419,21 +453,26 @@ ul.updates li::before{
   <header>
     <div class="eyebrow">LINE OPENCHAT・エリア情報ガイド</div>
     <h1>東京湾岸地区に関する情報交換</h1>
-    <div class="areas">
-      <span>豊洲</span><span>有明</span><span>晴海</span><span>勝どき</span><span>月島</span><span>東雲</span>
+    <div class="areas">豊洲・有明・晴海・勝どき・月島・東雲</div>
+    <div class="notice-box">
+      <ul>
+        <li>「東京湾岸地区に関する情報（豊洲　勝どき　東雲　有明　晴海　月島　佃　豊海　中央区　江東区）」という名称に似たオープンチャットが別に存在していますが、当オープンチャットとは関係ございません。</li>
+        <li>今回の件に関連して、他のオープンチャットやコミュニティ内で、事実と異なる情報が流れていることを確認しております（当オープンチャットの共同管理人を名乗る発言等）。公式な情報は、本チャットまたはこのページでのみご案内しておりますので、他所で見かけた情報は鵜呑みにせず、必ずこちらでご確認ください。</li>
+      </ul>
     </div>
-    <p class="mimic-notice">「東京湾岸地区に関する情報（豊洲　勝どき　東雲　有明　晴海　月島　佃　豊海　中央区　江東区）」という名称に似たオープンチャットが別に存在していますが、当オープンチャットとは関係ございません。</p>
-    <p class="mimic-notice">今回の件に関連して、他のオープンチャットやコミュニティ内で、事実と異なる情報が流れていることを確認しております（当オープンチャットの共同管理人を名乗る発言等）。公式な情報は、本チャットまたはこのページでのみご案内しておりますので、他所で見かけた情報は鵜呑みにせず、必ずこちらでご確認ください。</p>
-    <nav class="toc">
-      <a href="#about">オプチャについて</a>
-      <a href="#sns">関連SNS</a>
-      <a href="#whatsnew">更新情報</a>
-      <a href="#incident">10/6の障害について</a>
-      <a href="#rooms">サブチャット一覧</a>
-      <a href="#topics">よくある話題</a>
-      <a href="#links">行政・防災リンク</a>
-      <a href="#rules">利用ルール</a>
-    </nav>
+    <details class="toc-details">
+      <summary>このページの内容</summary>
+      <nav class="toc">
+        <a href="#about">オプチャについて</a>
+        <a href="#sns">関連SNS</a>
+        <a href="#whatsnew">更新情報</a>
+        <a href="#incident">10/6の障害について</a>
+        <a href="#rooms">サブチャット一覧</a>
+        <a href="#topics">よくある話題</a>
+        <a href="#links">行政・防災リンク</a>
+        <a href="#rules">利用ルール</a>
+      </nav>
+    </details>
   </header>
 
   <p class="lead">
